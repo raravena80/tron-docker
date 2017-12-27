@@ -19,8 +19,6 @@ RUN apt-get update > /dev/null && \
       pip install wheel && \
       pip install tron
 
-
-
 # This in case you want logs and/or config in the container
 # Not recommended
 RUN mkdir -p /var/log/tron
@@ -34,4 +32,4 @@ EXPOSE 8089
 USER tron
 WORKDIR /home/tron
 
-ENTRYPOINT ["trond", "--nodaemon"]
+ENTRYPOINT ["trond", "--nodaemon", "-H", "0.0.0.0"]

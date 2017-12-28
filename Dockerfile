@@ -2,6 +2,7 @@ FROM ubuntu:16.04
 
 RUN apt-get update > /dev/null && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+      vim \
       curl \
       net-tools \
       telnet \
@@ -18,6 +19,9 @@ RUN apt-get update > /dev/null && \
       pip install --upgrade pip && \
       pip install wheel && \
       pip install tron
+
+
+ADD cs /usr/local/lib/python2.7/dist-packages/tronweb/js/cs
 
 # This in case you want logs and/or config in the container
 # Not recommended

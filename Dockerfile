@@ -1,24 +1,18 @@
-FROM ubuntu:16.04
+# This is about half the size of the Ubuntu image
+FROM alpine:latest
 
-RUN apt-get update > /dev/null && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-      vim \
-      curl \
-      net-tools \
-      telnet \
-      python \
-      python-dev \
-      python-setuptools \
-      python-pip \
-      libffi-dev \
-      libssl-dev  \
-      ssh \
-      g++ \
-      libyaml-dev && \
-      adduser --disabled-password --gecos "" tron && \
-      pip install --upgrade pip && \
-      pip install wheel && \
-      pip install tron
+RUN     apk add --no-cache ca-certificates
+
+RUN set -x \
+	&& apk add --no-cache \
+		python python-dev py2-pip \
+		curl g++ libressl-dev \
+		libffi-dev openssh yaml-dev \
+	&& adduser -D -g "" tron \
+	&& pip install --upgrade pip \
+	&& pip install wheel \
+	&& pip install tron \
+        && echo "Build finished."
 
 
 ADD cs /usr/local/lib/python2.7/dist-packages/tronweb/js/cs

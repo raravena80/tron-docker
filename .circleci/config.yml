@@ -19,8 +19,10 @@ jobs:
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
             mv /tmp/docker/* /usr/bin
 
-      - run: |
-          TAG=0.1.$CIRCLE_BUILD_NUM
-          docker build -t  raravena80/tron-docker:$TAG .
-          docker login -u $DOCKER_USER -p $DOCKER_PASS
-          docker push raravena80/tron-docker:$TAG
+      - run:
+          name: Build and push Docker container
+          command: |
+            TAG=0.1.$CIRCLE_BUILD_NUM
+            docker build -t  raravena80/tron-docker:$TAG .
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker push raravena80/tron-docker:$TAG

@@ -1,4 +1,4 @@
-# tron-docker
+# tron-docker  [![CircleCI](https://img.shields.io/circleci/project/github/RedSparr0w/node-csgo-parser.svg)](https://github.com/raravena80/tron-docker)
 
 Full runnable Dockerfile for [Tron Scheduler](https://github.com/Yelp/Tron)
 

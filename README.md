@@ -21,7 +21,7 @@ If you are using the ssh-agent to connect to other hosts you need to specify the
  -P -p 8089:8089 tron:latest
 ```
 
-If you are using a `~/.ssh` directory you need to mount it from your hosts. For example:
+If you are using a `~/.ssh` directory you need to mount it the home dir from your host. For example (/home/tron):
 
 ```
 (sudo) docker run -d -e USER=tron \
